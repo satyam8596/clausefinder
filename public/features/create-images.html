@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Feature Images</title>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="clauseDetection" width="720" height="450"></canvas>
+  <canvas id="riskAnalysis" width="720" height="450"></canvas>
+  <canvas id="teamWorkflow" width="720" height="450"></canvas>
+  <script>
+    // Clause Detection
+    const canvasClause = document.getElementById('clauseDetection');
+    const ctxClause = canvasClause.getContext('2d');
+    
+    // Background gradient
+    const gradientClause = ctxClause.createLinearGradient(0, 0, 0, 450);
+    gradientClause.addColorStop(0, '#f0f9ff');
+    gradientClause.addColorStop(1, '#e0f2fe');
+    ctxClause.fillStyle = gradientClause;
+    ctxClause.fillRect(0, 0, 720, 450);
+    
+    // Title
+    ctxClause.fillStyle = '#1e40af';
+    ctxClause.font = 'bold 24px Arial';
+    ctxClause.fillText('Intelligent Clause Detection', 50, 50);
+    
+    // Document outline
+    ctxClause.fillStyle = '#ffffff';
+    ctxClause.fillRect(50, 80, 400, 320);
+    ctxClause.strokeStyle = '#94a3b8';
+    ctxClause.lineWidth = 1;
+    ctxClause.strokeRect(50, 80, 400, 320);
+    
+    // Document lines
+    ctxClause.fillStyle = '#cbd5e1';
+    for (let i = 0; i < 12; i++) {
+      ctxClause.fillRect(70, 110 + i * 22, 360, 8);
+    }
+    
+    // Highlighted clauses
+    ctxClause.fillStyle = '#dbeafe';
+    ctxClause.fillRect(70, 132, 360, 22);
+    ctxClause.fillRect(70, 220, 360, 22);
+    ctxClause.fillRect(70, 308, 180, 22);
+    
+    // Annotations
+    ctxClause.fillStyle = '#ffffff';
+    ctxClause.fillRect(480, 132, 180, 60);
+    ctxClause.fillRect(480, 220, 180, 60);
+    ctxClause.fillRect(480, 308, 180, 60);
+    
+    ctxClause.strokeStyle = '#3b82f6';
+    ctxClause.lineWidth = 2;
+    ctxClause.strokeRect(480, 132, 180, 60);
+    ctxClause.strokeRect(480, 220, 180, 60);
+    ctxClause.strokeRect(480, 308, 180, 60);
+    
+    // Annotation lines
+    ctxClause.beginPath();
+    ctxClause.moveTo(430, 143);
+    ctxClause.lineTo(480, 162);
+    ctxClause.moveTo(430, 231);
+    ctxClause.lineTo(480, 250);
+    ctxClause.moveTo(250, 319);
+    ctxClause.lineTo(480, 338);
+    ctxClause.strokeStyle = '#3b82f6';
+    ctxClause.stroke();
+    
+    // Annotation text
+    ctxClause.fillStyle = '#1e40af';
+    ctxClause.font = '12px Arial';
+    ctxClause.fillText('Indemnification Clause', 490, 152);
+    ctxClause.fillText('High Risk', 490, 172);
+    
+    ctxClause.fillText('Termination Clause', 490, 240);
+    ctxClause.fillText('Moderate Risk', 490, 260);
+    
+    ctxClause.fillText('Confidentiality Clause', 490, 328);
+    ctxClause.fillText('Low Risk', 490, 348);
+    
+    // Save the image
+    const dataUrlClause = canvasClause.toDataURL('image/png');
+    const linkClause = document.createElement('a');
+    linkClause.download = 'clause-detection.png';
+    linkClause.href = dataUrlClause;
+    linkClause.click();
+
+    // Risk Analysis
+    const canvasRisk = document.getElementById('riskAnalysis');
+    const ctxRisk = canvasRisk.getContext('2d');
+    
+    // Background gradient
+    const gradientRisk = ctxRisk.createLinearGradient(0, 0, 0, 450);
+    gradientRisk.addColorStop(0, '#f0fdf4');
+    gradientRisk.addColorStop(1, '#dcfce7');
+    ctxRisk.fillStyle = gradientRisk;
+    ctxRisk.fillRect(0, 0, 720, 450);
+    
+    // Title
+    ctxRisk.fillStyle = '#166534';
+    ctxRisk.font = 'bold 24px Arial';
+    ctxRisk.fillText('Comprehensive Risk Analysis', 50, 50);
+    
+    // Dashboard panel
+    ctxRisk.fillStyle = '#ffffff';
+    ctxRisk.fillRect(50, 80, 620, 320);
+    ctxRisk.strokeStyle = '#94a3b8';
+    ctxRisk.lineWidth = 1;
+    ctxRisk.strokeRect(50, 80, 620, 320);
+    
+    // Risk gauge
+    ctxRisk.beginPath();
+    ctxRisk.arc(170, 200, 80, 0, Math.PI * 2);
+    ctxRisk.fillStyle = '#f8fafc';
+    ctxRisk.fill();
+    ctxRisk.strokeStyle = '#cbd5e1';
+    ctxRisk.lineWidth = 2;
+    ctxRisk.stroke();
+    
+    // Risk level indicators
+    ctxRisk.beginPath();
+    ctxRisk.arc(170, 200, 80, Math.PI * 0.75, Math.PI * 2.25, false);
+    ctxRisk.strokeStyle = '#22c55e';
+    ctxRisk.lineWidth = 10;
+    ctxRisk.stroke();
+    
+    ctxRisk.beginPath();
+    ctxRisk.arc(170, 200, 80, Math.PI * 0.25, Math.PI * 0.75, false);
+    ctxRisk.strokeStyle = '#f59e0b';
+    ctxRisk.lineWidth = 10;
+    ctxRisk.stroke();
+    
+    ctxRisk.beginPath();
+    ctxRisk.arc(170, 200, 80, -Math.PI * 0.25, Math.PI * 0.25, false);
+    ctxRisk.strokeStyle = '#ef4444';
+    ctxRisk.lineWidth = 10;
+    ctxRisk.stroke();
+    
+    // Risk level needle
+    ctxRisk.beginPath();
+    ctxRisk.moveTo(170, 200);
+    ctxRisk.lineTo(170 + 70 * Math.cos(Math.PI * 0.6), 200 + 70 * Math.sin(Math.PI * 0.6));
+    ctxRisk.strokeStyle = '#334155';
+    ctxRisk.lineWidth = 3;
+    ctxRisk.stroke();
+    
+    // Center circle
+    ctxRisk.beginPath();
+    ctxRisk.arc(170, 200, 10, 0, Math.PI * 2);
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.fill();
+    
+    // Risk Details
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.font = 'bold 16px Arial';
+    ctxRisk.fillText('Contract Risk Details', 300, 120);
+    
+    // Risk items
+    ctxRisk.fillStyle = '#ef4444';
+    ctxRisk.fillRect(300, 140, 10, 10);
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.font = '14px Arial';
+    ctxRisk.fillText('High Risk Items: 3', 320, 150);
+    
+    ctxRisk.fillStyle = '#f59e0b';
+    ctxRisk.fillRect(300, 170, 10, 10);
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.font = '14px Arial';
+    ctxRisk.fillText('Moderate Risk Items: 8', 320, 180);
+    
+    ctxRisk.fillStyle = '#22c55e';
+    ctxRisk.fillRect(300, 200, 10, 10);
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.font = '14px Arial';
+    ctxRisk.fillText('Low Risk Items: 15', 320, 210);
+    
+    // Risk action items
+    ctxRisk.fillStyle = '#334155';
+    ctxRisk.font = 'bold 16px Arial';
+    ctxRisk.fillText('Recommendations', 300, 250);
+    
+    ctxRisk.font = '14px Arial';
+    ctxRisk.fillText('• Review liability limitations', 320, 280);
+    ctxRisk.fillText('• Address payment terms', 320, 310);
+    ctxRisk.fillText('• Update confidentiality clause', 320, 340);
+    
+    // Save the image
+    const dataUrlRisk = canvasRisk.toDataURL('image/png');
+    const linkRisk = document.createElement('a');
+    linkRisk.download = 'risk-analysis.png';
+    linkRisk.href = dataUrlRisk;
+    linkRisk.click();
+
+    // Team Workflow
+    const canvasWorkflow = document.getElementById('teamWorkflow');
+    const ctxWorkflow = canvasWorkflow.getContext('2d');
+    
+    // Background gradient
+    const gradientWorkflow = ctxWorkflow.createLinearGradient(0, 0, 0, 450);
+    gradientWorkflow.addColorStop(0, '#eff6ff');
+    gradientWorkflow.addColorStop(1, '#dbeafe');
+    ctxWorkflow.fillStyle = gradientWorkflow;
+    ctxWorkflow.fillRect(0, 0, 720, 450);
+    
+    // Title
+    ctxWorkflow.fillStyle = '#1e40af';
+    ctxWorkflow.font = 'bold 24px Arial';
+    ctxWorkflow.fillText('Streamlined Team Workflow', 50, 50);
+    
+    // Team members
+    const members = [
+      { x: 120, y: 150, color: '#3b82f6', label: 'Attorney' },
+      { x: 320, y: 150, color: '#8b5cf6', label: 'Reviewer' },
+      { x: 520, y: 150, color: '#ec4899', label: 'Client' },
+      { x: 220, y: 300, color: '#f59e0b', label: 'Manager' },
+      { x: 420, y: 300, color: '#10b981', label: 'Paralegal' }
+    ];
+    
+    // Draw team members
+    members.forEach(member => {
+      // Avatar circle
+      ctxWorkflow.beginPath();
+      ctxWorkflow.arc(member.x, member.y, 40, 0, Math.PI * 2);
+      ctxWorkflow.fillStyle = member.color;
+      ctxWorkflow.fill();
+      
+      // Label
+      ctxWorkflow.fillStyle = '#334155';
+      ctxWorkflow.font = '14px Arial';
+      ctxWorkflow.textAlign = 'center';
+      ctxWorkflow.fillText(member.label, member.x, member.y + 70);
+    });
+    
+    // Connection lines
+    ctxWorkflow.beginPath();
+    ctxWorkflow.moveTo(160, 150);
+    ctxWorkflow.lineTo(280, 150);
+    ctxWorkflow.moveTo(360, 150);
+    ctxWorkflow.lineTo(480, 150);
+    ctxWorkflow.moveTo(120, 190);
+    ctxWorkflow.lineTo(220, 260);
+    ctxWorkflow.moveTo(520, 190);
+    ctxWorkflow.lineTo(420, 260);
+    ctxWorkflow.moveTo(260, 300);
+    ctxWorkflow.lineTo(380, 300);
+    ctxWorkflow.strokeStyle = '#94a3b8';
+    ctxWorkflow.lineWidth = 2;
+    ctxWorkflow.stroke();
+    
+    // Document in center
+    ctxWorkflow.fillStyle = '#ffffff';
+    ctxWorkflow.fillRect(300, 200, 120, 150);
+    ctxWorkflow.strokeStyle = '#94a3b8';
+    ctxWorkflow.lineWidth = 1;
+    ctxWorkflow.strokeRect(300, 200, 120, 150);
+    
+    // Document lines
+    ctxWorkflow.fillStyle = '#cbd5e1';
+    for (let i = 0; i < 6; i++) {
+      ctxWorkflow.fillRect(310, 220 + i * 20, 100, 5);
+    }
+    
+    // Document title
+    ctxWorkflow.fillStyle = '#1e40af';
+    ctxWorkflow.font = 'bold 12px Arial';
+    ctxWorkflow.textAlign = 'center';
+    ctxWorkflow.fillText('Contract', 360, 200);
+    
+    // Save the image
+    const dataUrlWorkflow = canvasWorkflow.toDataURL('image/png');
+    const linkWorkflow = document.createElement('a');
+    linkWorkflow.download = 'team-workflow.png';
+    linkWorkflow.href = dataUrlWorkflow;
+    linkWorkflow.click();
+  </script>
+</body>
+</html> 
